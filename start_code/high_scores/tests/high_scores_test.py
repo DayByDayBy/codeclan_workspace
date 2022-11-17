@@ -5,21 +5,39 @@ from src.high_scores import latest, personal_best, personal_top_three
 # Tests adapted from `problem-specifications//canonical-data.json` @ v4.0.0
 
 
-class HighScoresTest(unittest.TestCase):
+class HighScoresTest(unittest.TestCase):  
     
-    # Tests
+    def test_latest_score(self,):
+        scores = [350, 275, 125, 400]
+        self.assertEqual(400, latest(scores))
 
-    # Test latest score (the last thing in the list)
+    def test_personal_best(self):
+        scores = [100, 200, 300, 425]
+        output = personal_best(scores)
+        self.assertEqual(425, output)
 
-    # Test personal best (the highest score in the list)
+    def test_top_three_scores(self):
+        scores = [100, 200, 300, 425, 375, 225]
+        output = personal_top_three(scores)
+        self.assertEqual([425, 375, 300], output)
 
-    # Test top three from list of scores
+    def test_high_low_sort(self):
+        scores = [100, 200, 300, 425, 375, 225]
+        output = personal_top_three(scores)
+        self.assertEqual([425, 375, 300], output)
 
-    # Test ordered from highest tp lowest
+    def test_top_three_including_tie(self):
+        scores = [100, 200, 300, 425, 375, 225]
+        output = personal_top_three(scores)
+        self.assertEqual([425, 375, 300], output)
 
-    # Test top three when there is a tie
 
-    # Test top three when there are less than three
-
-    # Test top three when there is only one
+    def test_top__when_less_than_three(self):
+        scores = [300, 425]
+        output = personal_top_three(scores)
+        self.assertEqual([425, 300], output)
     
+    def test_top_three_when_only_one(self):
+        scores = [300]
+        output = personal_top_three(scores)
+        self.assertEqual([300], output)

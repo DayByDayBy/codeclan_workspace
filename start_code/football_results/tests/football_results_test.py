@@ -3,6 +3,8 @@ from src.football_results import *
 
 class FootballResultsTest(unittest.TestCase):
     pass
+
+
     # Test we get the right result string for a final score dictionary representing -
 
         # Home win
